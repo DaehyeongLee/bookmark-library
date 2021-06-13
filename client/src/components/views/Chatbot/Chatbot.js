@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveMessage } from '../_actions/message_actions';
+import { saveMessage } from '../../../_actions/message_actions';
 import Message from './Sections/Message';
 import Card from './Sections/Card';
 import {List, Icon, Avatar} from 'antd';
