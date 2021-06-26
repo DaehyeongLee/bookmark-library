@@ -36,6 +36,7 @@ app.use(cookieParser());
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/dialogflow', require('./routes/dialogflow'));
+app.use('/api/bookmark', require('./routes/bookmark'));
 
 
 //use this to show the image you have in node js server to client (react js)
