@@ -1,14 +1,13 @@
-import React from 'react'
-import { FaCode } from "react-icons/fa";
+import React from 'react';
+import Bookmark from '../Bookmark/Bookmark';
 
 function LandingPage() {
     return (
-        <>
+        
             <div className="app">
-                <FaCode style={{ fontSize: '4rem' }} /><br />
-                <span style={{ fontSize: '2rem' }}>Let's Start Coding!</span>
+                <Bookmark />
             </div>
-        </>
+        
     )
 }
 
