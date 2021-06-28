@@ -1,11 +1,10 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
-import { getChromeBookmark } from 'chrome-bookmark-reader';
 
 function Bookmark() {
 
     const [winUsername, setwinUsername] = useState("")
-    const path = `C:/Users/${winUsername}/AppData/Local/Google/Chrome/User Data/Default/Bookmarks`
+    const [bookmarkData, setbookmarkData] = useState("")
     //const result = getChromeBookmark(path)
 
     //console.log(result)
@@ -14,8 +13,19 @@ function Bookmark() {
     useEffect(() => {
         axios.post('/api/bookmark/getUsername').then(response => {
             if (response.data.success) {
-                console.log(response.data)
+
                 setwinUsername(response.data.username)
+
+                const path = `C:/Users/${response.data.username}/AppData/Local/Google/Chrome/User Data/Default/Bookmarks`
+                axios.post('/api/bookmark/readBookmark', {path: path}).then(response => {
+                    if (response.data.success) {
+                        setbookmarkData(response.data.bookmark)
+                        console.log(response.data.bookmark)
+                    } else {
+                        alert(response.data.message)
+                    }
+                })
+
             } else {
                 alert(response.data.message)
             }
@@ -24,7 +34,7 @@ function Bookmark() {
 
     return (
         <div>
-            My Windows user name is {winUsername}
+            My Windows user name is {winUsername} <br />
         </div>
     )
 }

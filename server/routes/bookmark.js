@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const getUsername = require('username');
+const fs = require('fs');
 
 
 //=================================
@@ -23,6 +24,28 @@ router.post("/getUsername", (req, res) => {
             }); 
         }
     })();
+});
+
+router.post("/readBookmark", (req, res) => {
+    
+    let bookmarkPath = req.body.path;
+
+    //Read bookmark data
+    fs.readFile(bookmarkPath, 'utf8', function(err, bookmark){
+        if (req.body.path) {
+            return res.json({
+                success: true,
+                bookmark
+            }); 
+        } else {
+            return res.json({
+                success: false,
+                message: "Failed to get bookmark data"
+            }); 
+        }
+      });
+
+    
 });
 
 
