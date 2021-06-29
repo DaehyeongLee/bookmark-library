@@ -4,7 +4,7 @@ import axios from 'axios';
 function Bookmark() {
 
     const [winUsername, setwinUsername] = useState("")
-    const [bookmarkData, setbookmarkData] = useState("")
+    const [bookmarkData, setbookmarkData] = useState(null)
     //const result = getChromeBookmark(path)
 
     //console.log(result)
@@ -19,8 +19,8 @@ function Bookmark() {
                 const path = `C:/Users/${response.data.username}/AppData/Local/Google/Chrome/User Data/Default/Bookmarks`
                 axios.post('/api/bookmark/readBookmark', {path: path}).then(response => {
                     if (response.data.success) {
-                        setbookmarkData(response.data.bookmark)
-                        console.log(response.data.bookmark)
+                        console.log(JSON.parse(response.data.bookmark))
+                        setbookmarkData(JSON.parse(response.data.bookmark))
                     } else {
                         alert(response.data.message)
                     }
@@ -35,6 +35,15 @@ function Bookmark() {
     return (
         <div>
             My Windows user name is {winUsername} <br />
+            My chrome bookmark list : <br />
+            <li>
+            {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => (
+                <ul key={index}>
+                    {item.name}
+                </ul>
+            ))
+            }
+            </li>                    
         </div>
     )
 }
