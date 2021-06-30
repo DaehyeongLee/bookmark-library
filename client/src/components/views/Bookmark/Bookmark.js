@@ -1,5 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
+import {Collapse, Button} from 'antd';
+import './Sections/Bookmark.css';
+const { Panel } = Collapse;
 
 function Bookmark() {
 
@@ -34,16 +37,23 @@ function Bookmark() {
 
     return (
         <div>
-            My Windows user name is {winUsername} <br />
-            My chrome bookmark list : <br />
-            <li>
-            {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => (
-                <ul key={index}>
-                    {item.name}
-                </ul>
-            ))
-            }
-            </li>                    
+            
+            <h4>My chrome bookmark list :</h4> <br />
+            {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
+                if (item.type == "folder") {
+                    return <React.Fragment key={index}><Collapse>
+                        <Panel header={item.name}> 
+                        {item && item.children.map((childItem, childIndex) => {
+                            return <div key={childIndex}>{childIndex+1}.&nbsp;&nbsp;&nbsp;{childItem.name}</div>
+                        })
+                        }
+                        <Button className = "bookmark_select_btn">Select</Button>
+                        </Panel>                        
+                    </Collapse>
+                    </React.Fragment>
+                }    
+            })
+            }                  
         </div>
     )
 }
