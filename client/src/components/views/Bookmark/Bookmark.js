@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
+import { Row, Col } from 'antd';
 import {Collapse, Button} from 'antd';
 import './Sections/Bookmark.css';
 const { Panel } = Collapse;
@@ -8,6 +9,8 @@ function Bookmark() {
 
     const [winUsername, setwinUsername] = useState("")
     const [bookmarkData, setbookmarkData] = useState(null)
+    const [isSelectedBookmark, setisSelectedBookmark] = useState(false)
+    const [selectedBookmark, setselectedBookmark] = useState(null)
     //const result = getChromeBookmark(path)
 
     //console.log(result)
@@ -35,25 +38,40 @@ function Bookmark() {
         })
     }, [])
 
+    const onSelectBookmark = (childItem) => {
+        setisSelectedBookmark(true);
+        setselectedBookmark(childItem)
+    }
+
     return (
         <div>
-            
+
             <h4>My chrome bookmark list :</h4> <br />
-            {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
-                if (item.type == "folder") {
-                    return <React.Fragment key={index}><Collapse>
-                        <Panel header={item.name}> 
-                        {item && item.children.map((childItem, childIndex) => {
-                            return <div key={childIndex}>{childIndex+1}.&nbsp;&nbsp;&nbsp;{childItem.name}</div>
-                        })
+            {/* <Row>
+                <Col> */}
+                    {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
+                        if (item.type == "folder") {
+                            return <React.Fragment key={index}><Collapse>
+                                <Panel header={item.name}>
+                                    {item && item.children.map((childItem, childIndex) => {
+                                        return <div key={childIndex}>{childIndex + 1}.&nbsp;&nbsp;&nbsp;{childItem.name}</div>
+                                    })
+                                    }
+                                    <Button className="bookmark_select_btn" onClick = {onSelectBookmark(item.childItem)}>Select</Button>
+                                </Panel>
+                            </Collapse>
+                            </React.Fragment>
                         }
-                        <Button className = "bookmark_select_btn">Select</Button>
-                        </Panel>                        
-                    </Collapse>
-                    </React.Fragment>
-                }    
-            })
-            }                  
+                    })
+                    }
+                {/* </Col> */}
+                {/* <Col>
+                    {selectedBookmark && isSelectedBookmark && selectedBookmark.map((item, index) => {
+                        return <div key={index}>{index + 1}.&nbsp;&nbsp;&nbsp;{item.name}</div>
+                    })}
+                </Col> */}
+            {/* </Row> */}
+
         </div>
     )
 }
