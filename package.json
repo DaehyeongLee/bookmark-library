@@ -31,6 +31,7 @@
     "mongoose": "^5.4.20",
     "node-sass": "^6.0.1",
     "react-redux": "^5.0.7",
+    "reactstrap": "^8.9.0",
     "saslprep": "^1.0.3",
     "supports-color": "^7.1.0",
     "username": "^5.1.0"

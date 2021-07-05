@@ -162,6 +162,7 @@ function Chatbot() {
     }
 
     return (
+        <div className = "app" >
         <div style={{
             height: 700, width: 700,
             border: '3px solid black', borderRadius: '7px'
@@ -179,6 +180,7 @@ function Chatbot() {
                 onKeyPress={keyPressHandler}
                 type="text"
             />
+        </div>
         </div>
     )
 }

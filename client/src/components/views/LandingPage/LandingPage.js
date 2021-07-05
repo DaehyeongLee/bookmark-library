@@ -4,7 +4,7 @@ import Bookmark from '../Bookmark/Bookmark';
 function LandingPage() {
     return (
         
-            <div className="app">
+            <div>
                 <Bookmark />
             </div>
         

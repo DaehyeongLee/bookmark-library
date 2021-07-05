@@ -4,3 +4,15 @@
     margin: 15px 5px;
     
 }
+.bookmark_body {
+    padding: 20px;
+}
+
+.bookmark_panel {
+    width: 40%;
+    float: left;
+}
+.bookmark_selectedPanel {
+    width: 40%;
+    float: right;
+}
