@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import { Container, Row, Col } from 'reactstrap';
 import {Collapse, Button} from 'antd';
-import './Sections/Bookmark.css';
+import './Sections/UploadBookmark.css';
 const { Panel } = Collapse;
 
 function Bookmark() {
@@ -71,9 +71,12 @@ function Bookmark() {
                     {selectedBookmark && isSelectedBookmark && selectedBookmark.map((item, index) => {
                         return <div key={index}>{index + 1}.&nbsp;&nbsp;&nbsp;{item.name}</div>
                     })}
+                    {isSelectedBookmark && 
+                        <Button className="bookmark_select_btn">Upload</Button>
+                    }
                 </Col>
                 </Row>
-                </Container>
+            </Container>
         </div>
     )
 }

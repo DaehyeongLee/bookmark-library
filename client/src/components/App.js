@@ -8,7 +8,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import Chatbot from "./views/Chatbot/Chatbot";
-import Bookmark from "./views/Bookmark/Bookmark";
+import UploadBookmark from "./views/UploadBookmark/UploadBookmark";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/chat" component={Auth(Chatbot, true)} />
-          <Route exact path="/bookmark" component={Auth(Bookmark, true)} />
+          <Route exact path="/Uploadbookmark" component={Auth(UploadBookmark, true)} />
         </Switch>
       </div>
       <Footer />
