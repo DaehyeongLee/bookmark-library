@@ -7,6 +7,13 @@ const bookmarkSchema = mongoose.Schema({
     },
     bookmark: {
         type:String
+    },
+    title: {
+        type:String,
+        maxlength:50
+    }, 
+    description: {
+        type:String
     }
     
 })

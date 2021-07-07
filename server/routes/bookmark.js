@@ -44,8 +44,11 @@ router.post("/readBookmark", (req, res) => {
             }); 
         }
       });
+});
 
+router.post("/uploadBookmark", (req, res) => {
     
+    //To do
 });
 
 
