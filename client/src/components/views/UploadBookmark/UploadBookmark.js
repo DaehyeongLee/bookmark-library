@@ -63,11 +63,11 @@ function Bookmark() {
             description: bookmarkDescription
         }
 
-        axios.post('/api/video/uploadBookmark', variables)
+        axios.post('/api/bookmark/uploadBookmark', variables)
         .then(response => {
             if(response.data.success) {
 
-                response.data.message('성공적으로 업로드 되었습니다.')
+                alert('성공적으로 업로드 되었습니다.')
                 
 
             } else {

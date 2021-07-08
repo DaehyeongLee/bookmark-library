@@ -4,6 +4,8 @@ const router = express.Router();
 const getUsername = require('username');
 const fs = require('fs');
 
+const {Bookmark} = require('../models/Bookmark')
+
 
 //=================================
 //             Bookmark
@@ -48,7 +50,16 @@ router.post("/readBookmark", (req, res) => {
 
 router.post("/uploadBookmark", (req, res) => {
     
-    //To do
+    const bookmark = new Bookmark(req.body)
+
+    bookmark.save((err, doc) => {
+        if(err) {
+            console.log(err)
+            return res.json({success: false, err})
+        } else {
+            return res.status(200).json({success: true})
+        }
+    })
 });
 
 
