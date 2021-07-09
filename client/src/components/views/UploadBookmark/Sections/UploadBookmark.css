@@ -9,10 +9,12 @@
 }
 
 .bookmark_panel {
-    width: 40%;
+    width: 50vh;
     float: left;
+    margin-right: 30px;
 }
 .bookmark_selectedPanel {
-    width: 40%;
+    width: 50vh;
     float: right;
+    margin-left: 30px;
 }
