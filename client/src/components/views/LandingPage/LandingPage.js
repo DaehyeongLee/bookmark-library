@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Input, Form} from 'antd';
+import SearchedBookmark from '../SearchedBookmark/SearchedBookmark';
 
-function LandingPage() {
+function LandingPage(props) {
+
+    const [searchText, setsearchText] = useState("")
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        props.history.push(`/bookmark/search-result/${searchText}`);
+    }
+    const onInputChange = (e) => {
+        setsearchText(e.currentTarget.value)
     }
 
     return (
@@ -15,7 +23,7 @@ function LandingPage() {
                             label="Search the bookmarks you want"
                             name="Bookmark_Search"
                         >
-                            <Input />
+                            <Input onChange={onInputChange} value={searchText}/>
                         </Form.Item>
                         <Button type="primary" className="bookmark_search_btn" onClick = {onSubmit}>Search</Button>
                     </Form>
