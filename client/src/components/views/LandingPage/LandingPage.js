@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Button, Input, Form} from 'antd';
-import SearchedBookmark from '../SearchedBookmark/SearchedBookmark';
 
 function LandingPage(props) {
 
@@ -12,6 +11,9 @@ function LandingPage(props) {
         props.history.push(`/bookmark/search-result/${searchText}`);
     }
     const onInputChange = (e) => {
+
+        //To do : Input validation (비어있을 시 값을 넣으라는 alert)
+
         setsearchText(e.currentTarget.value)
     }
 

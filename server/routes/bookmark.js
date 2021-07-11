@@ -62,6 +62,14 @@ router.post("/uploadBookmark", (req, res) => {
     })
 });
 
-
+router.post("/searchBookmark", (req, res) => {
+    Bookmark.find({ title : {$regex : req.body.searchInput} } ) 
+    .populate('writer')
+    .exec((err, result) => {
+        if (err) return res.status(400).send(err)
+        return res.status(200).json({success: true, result})
+    })
+    
+});
 
 module.exports = router;
