@@ -23,7 +23,13 @@ function SearchedBookmark(props) {
 
     return (
         <div>
-            SearchedBookmark
+            {resultItems && resultItems.length > 0 && 
+                <div>SearchedBookmark</div>
+
+            }
+            {resultItems && resultItems.length == 0 &&
+               <div>검색 결과가 존재하지 않습니다.</div>
+            }
         </div>
     )
 }

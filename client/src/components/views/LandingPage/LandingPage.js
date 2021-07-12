@@ -8,11 +8,15 @@ function LandingPage(props) {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        props.history.push(`/bookmark/search-result/${searchText}`);
+        if(searchText.length > 0) {
+            props.history.push(`/bookmark/search-result/${searchText}`);
+        }
+        else {
+            alert("Please enter the text.")
+        }
+        
     }
     const onInputChange = (e) => {
-
-        //To do : Input validation (비어있을 시 값을 넣으라는 alert)
 
         setsearchText(e.currentTarget.value)
     }
