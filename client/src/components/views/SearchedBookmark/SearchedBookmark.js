@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import './Sections/SearchedBookmark.css';
 
 function SearchedBookmark(props) {
 
@@ -22,7 +23,7 @@ function SearchedBookmark(props) {
 
 
     return (
-        <div>
+        <div className = "Result-body">
             {resultItems && resultItems.length > 0 && 
                 <div>SearchedBookmark</div>
 
