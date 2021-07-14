@@ -24,9 +24,14 @@ function SearchedBookmark(props) {
 
     return (
         <div className = "Result-body">
-            {resultItems && resultItems.length > 0 && 
-                <div>SearchedBookmark</div>
-
+            <h3>Result : </h3> <br />
+            {resultItems && resultItems.length > 0 && resultItems.map((items, index) => {
+                return <div key ={index}> 
+                    {index+1}. {items.title}
+                    <br />
+                    <br />
+                </div>
+            })
             }
             {resultItems && resultItems.length == 0 &&
                <div>검색 결과가 존재하지 않습니다.</div>
