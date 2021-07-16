@@ -25,9 +25,11 @@ function SearchedBookmark(props) {
     return (
         <div className = "Result-body">
             <h3>Result : </h3> <br />
-            {resultItems && resultItems.length > 0 && resultItems.map((items, index) => {
+            {resultItems && resultItems.length > 0 && resultItems.map((item, index) => {
                 return <div key ={index}> 
-                    {index+1}. {items.title}
+                    {index+1}. {item.title}
+                    {/*To do: Click one item -> Detail Page 
+                    parameter -> item*/}
                     <br />
                     <br />
                 </div>
