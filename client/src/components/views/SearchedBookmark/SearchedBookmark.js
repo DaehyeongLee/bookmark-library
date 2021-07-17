@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import { withRouter, Link } from 'react-router-dom';
 import './Sections/SearchedBookmark.css';
 
 function SearchedBookmark(props) {
@@ -27,7 +28,7 @@ function SearchedBookmark(props) {
             <h3>Result : </h3> <br />
             {resultItems && resultItems.length > 0 && resultItems.map((item, index) => {
                 return <div key ={index}> 
-                    {index+1}. {item.title}
+                    {index+1}. <Link to = {`/bookmark/detail/${item._id}`}>{item.title}</Link>
                     {/*To do: Click one item -> Detail Page 
                     parameter -> item*/}
                     <br />
@@ -42,4 +43,4 @@ function SearchedBookmark(props) {
     )
 }
 
-export default SearchedBookmark
+export default withRouter(SearchedBookmark)

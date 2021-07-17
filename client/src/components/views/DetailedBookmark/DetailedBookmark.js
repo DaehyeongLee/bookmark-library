@@ -1,9 +1,12 @@
 import React from 'react'
 
-function DetailedBookmark() {
+function DetailedBookmark(props) {
+
+    const detailItemTitle = props.match.params.item;
+
     return (
         <div>
-            DetailedBookmark
+            Detail Item's ID is : {detailItemTitle}
         </div>
     )
 }
