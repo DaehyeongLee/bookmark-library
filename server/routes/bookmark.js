@@ -72,4 +72,14 @@ router.post("/searchBookmark", (req, res) => {
     
 });
 
+router.post("/detailedBookmark", (req, res) => {
+    Bookmark.find({ _id : req.body.bookmarkId} ) 
+    .populate('writer')
+    .exec((err, result) => {
+        if (err) return res.status(400).send(err)
+        return res.status(200).json({success: true, result})
+    })
+    
+});
+
 module.exports = router;
