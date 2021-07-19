@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../Commons/body_design.css';
+import './Sections/DetailedBookmark.css';
 
 function DetailedBookmark(props) {
 
@@ -28,13 +30,11 @@ function DetailedBookmark(props) {
     return (
         <div className = "Result-body">
 
-            {/* To do : Result - body CSS, Result -body common화하기 */}
-
             {detailTitle && 
-                <div>Title: {detailTitle} </div>
+                <div className = "detail-text">Title: {detailTitle} </div>
             }
             {detailDescription &&
-                <div>Description: {detailDescription} </div>
+                <div className = "detail-text">Description: {detailDescription} </div>
             }
             <br />
             <br />

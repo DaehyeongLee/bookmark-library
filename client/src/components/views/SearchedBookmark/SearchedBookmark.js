@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { withRouter, Link } from 'react-router-dom';
 import './Sections/SearchedBookmark.css';
+import '../Commons/body_design.css';
 
 function SearchedBookmark(props) {
 
