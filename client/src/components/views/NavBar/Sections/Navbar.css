@@ -1,6 +1,26 @@
 @import '~antd/dist/antd.css';
 
-.menu {
+.menu-brand {
+  background-color: white;
+  padding: 15px 0px;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-brand .ant-menu-horizontal {
+  border : none;
+  line-height: 65px;
+}
+.container {
+  width: 80%;
+  
+}
+.brand_right {
+  float: right;
+} 
+
+.menu-navigation {
   padding: 0 20px;
   border-bottom: solid 1px #e8e8e8;
   overflow: auto;

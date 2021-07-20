@@ -40,7 +40,7 @@ function DetailedBookmark(props) {
             <br />
             {datailItems && datailItems.length > 0 && datailItems.map((item, index) => {
                 return <div key={index}>
-                         <div>{index + 1}. Name: {item.name} &nbsp; URL: {item.url}</div>
+                         <div>{index + 1}. Name: {item.name} &nbsp; URL: <a href = {item.url} target = "_blank">{item.url}</a></div>
                     <br />
                 </div>
             })
