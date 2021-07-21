@@ -32,6 +32,9 @@
   width: 150px;
   float: left;
 }
+.menu__logo .logo_img{
+  width: 150px;
+}
 
 .menu__logo a {
   display: inline-block;
