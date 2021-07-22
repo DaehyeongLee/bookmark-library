@@ -1,55 +1,63 @@
 @import '~antd/dist/antd.css';
 
+/**** Ant menu design ***/
+.ant-menu-horizontal {
+  border: none;
+  line-height: 65px;
+}
+.ant-menu-horizontal > .ant-menu-item > a:hover {
+  color: #F7931D;
+}
+.ant-menu-horizontal > .ant-menu-item:hover {
+  border-bottom: 2px solid#F7931D;
+  color: #F7931D;
+}
+
+/**** Brand Menu ****/
 .menu-brand {
-  background-color: white;
-  padding: 15px 0px;
+  padding: 5px 0px;
   flex-direction: row;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.menu-brand .ant-menu-horizontal {
-  border : none;
-  line-height: 65px;
-}
 .container {
   width: 80%;
-  
 }
 .brand_right {
   float: right;
+  padding-top: 5px;
 } 
-
-.menu-navigation {
-  padding: 0 20px;
-  border-bottom: solid 1px #e8e8e8;
-  overflow: auto;
-  box-shadow: 0 0 30px #f3f1f1;
-  background-color: white;
-}
-
 .menu__logo {
   width: 150px;
   float: left;
 }
 .menu__logo .logo_img{
-  width: 150px;
+  width: 180px;
 }
-
 .menu__logo a {
   display: inline-block;
-  font-size: 20px;
-  padding: 19px 20px;
 }
 
+/**** Navigation Menu ****/
+.menu-navigation {
+  border-top: solid 1px #dcdcdc;
+  border-bottom: solid 1px #dcdcdc;
+  background-color: white;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu__container {
+  width: 80%;
+}
 .menu__container .ant-menu-item {
   padding: 0px 5px;
 }
-
 .menu__container .ant-menu-submenu-title {
   padding: 10px 20px;
 }
-
 .menu__container .ant-menu-item a,
 .menu__container .ant-menu-submenu-title a {
   padding: 10px 15px;
