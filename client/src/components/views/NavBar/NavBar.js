@@ -18,7 +18,7 @@ function NavBar() {
 
   return (
     <React.Fragment>
-      <div className="menu-brand">
+      <div className="menu-brand" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
         <div className="container">
 
 
@@ -34,14 +34,11 @@ function NavBar() {
 
         </div>
       </div>
-      <nav className="menu-navigation" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
+      <nav className="menu-navigation" style={{ position: 'fixed', top: '86px', zIndex: 5, width: '100%' }}>
 
         <div className="menu__container">
           <div className="menu_left">
             <LeftMenu mode="horizontal" />
-          </div>
-          <div className="menu_rigth">
-            <RightMenu mode="horizontal" />
           </div>
           <Button
             className="menu__mobile-button"

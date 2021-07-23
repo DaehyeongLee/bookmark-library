@@ -22,12 +22,16 @@
   align-items: center;
 }
 .container {
-  width: 80%;
+  width: 70%;
 }
 .brand_right {
   float: right;
   padding-top: 5px;
 } 
+.brand_right ul li a {
+  font-size: 14px;
+  font-weight: bold;
+}
 .menu__logo {
   width: 150px;
   float: left;
@@ -50,29 +54,15 @@
   align-items: center;
 }
 .menu__container {
-  width: 80%;
+  width: 70%;
 }
-.menu__container .ant-menu-item {
-  padding: 0px 5px;
+.menu__container ul {
+  display: flex;
+  justify-content: space-between;
 }
-.menu__container .ant-menu-submenu-title {
-  padding: 10px 20px;
-}
-.menu__container .ant-menu-item a,
-.menu__container .ant-menu-submenu-title a {
-  padding: 10px 15px;
-}
-
-.menu__container .ant-menu-horizontal {
-  border-bottom: none;
-}
-
-.menu__container .menu_left {
-  float: left;
-}
-
-.menu__container .menu_rigth {
-  float: right;
+.menu__container ul li a{
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .menu__mobile-button {
