@@ -34,7 +34,7 @@ function NavBar() {
 
         </div>
       </div>
-      <nav className="menu-navigation" style={{ position: 'fixed', top: '86px', zIndex: 5, width: '100%' }}>
+      <nav className="menu-navigation" style={{ position: 'fixed', top: '76px', zIndex: 5, width: '100%' }}>
 
         <div className="menu__container">
           <div className="menu_left">
