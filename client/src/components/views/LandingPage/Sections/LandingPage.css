@@ -1,0 +1,31 @@
+.search_input input {
+    height: 40px;
+}
+.search_label {
+    background-color: #58595B;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 1rem;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    display: flex;
+}   
+.bookmark_search_btn button {
+    background-color: #F7931D;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 1rem;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    display: flex;
+    border: none;
+}
+.ant-form-horizontal {
+    width: 40%;
+}
+.ant-col {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
