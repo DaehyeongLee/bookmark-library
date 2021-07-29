@@ -10,14 +10,9 @@ function MainImage(props) {
         height: '400px',
         backgroundSize: '100%, cover',
         width: '100%',
-        position: 'relative'
+        position: 'absolute',
+        top: '142px'
         }}>
-            <div>
-                <div style = {{position: 'absolute', maxWidth: '500px', bottom: '2rem', marginLeft: '2rem'}}>
-                    <h2 style ={{color: 'white'}}>{props.title}</h2>
-                    <p style = {{color:'white', fontSize: '1rem'}}>{props.text}</p>
-                </div>
-            </div>
         </div>
     )
 }

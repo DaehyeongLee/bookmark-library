@@ -26,12 +26,12 @@ function LandingPage(props) {
     }
 
     return (
-        <div style={{ width: '100%', margin: '-35px 0 0 0', padding: '0' }}>
+        <div style={{ width: '100%', margin: '0', padding: '0' }}>
             <MainImage
                 image={bannerImg}
                 title="Title"
                 text="Text" />
-            <div className="app">
+            <div className="input-field">
                 <Form onSubmit={onSubmit}>
                     <Row gutter={16}>
                         <Col className="gutter-row" span={3}>
