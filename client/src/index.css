@@ -35,3 +35,13 @@ input.error {
   height: 5px;
   margin-top: -12px;
 }
+
+/* All Button */
+.ant-btn-primary {
+  background-color : #F7931D !important;
+  border : 1px solid #F7931D !important;
+}
+.ant-btn-primary:hover {
+  background-color : #c56c07 !important;
+  border : 1px solid #c56c07 !important;
+}
