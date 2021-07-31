@@ -28,23 +28,27 @@ function DetailedBookmark(props) {
 
 
     return (
-        <div className = "Result-body">
+        <div style={{ width: '100%', margin: '0', padding: '0' }}>
+            
 
-            {detailTitle && 
-                <div className = "detail-text">Title: {detailTitle} </div>
-            }
-            {detailDescription &&
-                <div className = "detail-text">Description: {detailDescription} </div>
-            }
-            <br />
-            <br />
-            {datailItems && datailItems.length > 0 && datailItems.map((item, index) => {
-                return <div key={index}>
-                         <div>{index + 1}. Name: {item.name} &nbsp; URL: <a href = {item.url} target = "_blank">{item.url}</a></div>
-                    <br />
-                </div>
-            })
-            }
+            <div className="Result-body">
+
+                {detailTitle &&
+                    <div className="detail-text">Title: {detailTitle} </div>
+                }
+                {detailDescription &&
+                    <div className="detail-text">Description: {detailDescription} </div>
+                }
+                <br />
+                <br />
+                {datailItems && datailItems.length > 0 && datailItems.map((item, index) => {
+                    return <div key={index}>
+                        <div>{index + 1}. Name: {item.name} &nbsp; URL: <a href={item.url} target="_blank">{item.url}</a></div>
+                        <br />
+                    </div>
+                })
+                }
+            </div>
         </div>
     )
 }
