@@ -28,26 +28,31 @@ function SearchedBookmark(props) {
     return (
         <React.Fragment>
             <div style={{ width: '100%', margin: '0', padding: '0' }}>
-                <SelectedTitle fieldName="통합검색"/>
+                <SelectedTitle fieldName="통합검색" />
             </div>
 
-            {/* To do: Body 전체 보이도록 css 수정 
-            바디 템플릿 수정*/}
             <div className="Result-body">
-                <h3>Result : </h3> <br />
-                {resultItems && resultItems.length > 0 && resultItems.map((item, index) => {
-                    return <div key={index}>
-                        {index + 1}. <Link to={`/bookmark/detail/${item._id}`}>{item.title}</Link>
-                        {/*To do: Click one item -> Detail Page 
-                    parameter -> item*/}
-                        <br />
-                        <br />
-                    </div>
-                })
-                }
-                {resultItems && resultItems.length == 0 &&
-                    <div>검색 결과가 존재하지 않습니다.</div>
-                }
+
+                <div className="Result-body__result-msg">
+                    Search result with keyword &nbsp;<em className="Result-body__result-msg__em-tag">{searchVariable}</em>
+                </div>
+
+                <div className="Result-body__content">
+                    <h3 className="Result-body__content__title">Bookmark List <span className="Result-body__content__title__itemNum">{resultItems && resultItems.length} items</span></h3> 
+                    <br />
+                    {resultItems && resultItems.length > 0 && resultItems.map((item, index) => {
+                        return <div key={index}>
+                            {index + 1}. <Link to={`/bookmark/detail/${item._id}`}>{item.title}</Link>
+                            <br />
+                            <br />
+                        </div>
+                    })
+                    }
+                    {resultItems && resultItems.length == 0 &&
+                        <div>검색 결과가 존재하지 않습니다.</div>
+                    }
+                </div>
+
             </div>
 
         </React.Fragment>
