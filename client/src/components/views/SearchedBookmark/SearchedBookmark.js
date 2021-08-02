@@ -38,13 +38,18 @@ function SearchedBookmark(props) {
                 </div>
 
                 <div className="Result-body__content">
-                    <h3 className="Result-body__content__title">Bookmark List <span className="Result-body__content__title__itemNum">{resultItems && resultItems.length} items</span></h3> 
-                    <br />
+                    <h3 className="Result-body__content__title">Bookmark List <span className="Result-body__content__title__itemNum">{resultItems && resultItems.length} items</span></h3>
                     {resultItems && resultItems.length > 0 && resultItems.map((item, index) => {
-                        return <div key={index}>
-                            {index + 1}. <Link to={`/bookmark/detail/${item._id}`}>{item.title}</Link>
+                        return <div key={index} className="Result-body__content__list">
+                            <span className="Result-body__content__list__title">{item.title}</span>
                             <br />
-                            <br />
+                            <br />  
+                            <p>
+                                Writer Name: <strong>{item.writer.name}</strong>
+                                <br />
+                                Upload Date: <strong>{/*To do: Time stamp Update */}</strong>
+                            </p>
+                            <Link style={{fontSize: '15px'}}to={`/bookmark/detail/${item._id}`}>▶ Detail</Link>
                         </div>
                     })
                     }
