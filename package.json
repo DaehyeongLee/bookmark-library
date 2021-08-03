@@ -16,6 +16,8 @@
   "author": "Daehyeong-Lee",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "chrome-bookmark-reader": "^0.4.0",

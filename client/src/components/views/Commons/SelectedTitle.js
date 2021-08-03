@@ -8,6 +8,7 @@ function SelectedTitle(props) {
         width: '100%',
         position: 'absolute',
         top: '142px',
+        borderTop: '1px solid #dcdcdc',
         borderBottom: '1px solid #dcdcdc',
         fontSize: '2rem',
         fontWeight: 'bold',

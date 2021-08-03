@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { withRouter, Link } from 'react-router-dom';
 import SelectedTitle from '../Commons/SelectedTitle';
+import Pagination from '../Commons/util/Pagination';
 import './Sections/SearchedBookmark.css';
 import '../Commons/body_design.css';
+
+
 
 function SearchedBookmark(props) {
 
     const searchVariable = props.match.params.input;
     const [resultItems, setresultItems] = useState(null)
+
+
+    
 
     useEffect(() => {
         axios.post('/api/bookmark/searchBookmark', { searchInput: searchVariable }).then(response => {
@@ -33,15 +39,15 @@ function SearchedBookmark(props) {
 
             <div className="Result-body">
 
-                <div className="Result-body__result-msg">
-                    Search result with keyword &nbsp;<em className="Result-body__result-msg__em-tag">{searchVariable}</em>
+                <div className="result-msg">
+                    Search result with keyword &nbsp;<em className="result-msg__em-tag">{searchVariable}</em>
                 </div>
 
-                <div className="Result-body__content">
-                    <h3 className="Result-body__content__title">Bookmark List <span className="Result-body__content__title__itemNum">{resultItems && resultItems.length} items</span></h3>
+                <div className="content">
+                    <h3 className="content__title">Bookmark List <span className="content__title__itemNum">{resultItems && resultItems.length} items</span></h3>
                     {resultItems && resultItems.length > 0 && resultItems.map((item, index) => {
-                        return <div key={index} className="Result-body__content__list">
-                            <span className="Result-body__content__list__title">{item.title}</span>
+                        return <div key={index} className="content__list">
+                            <span className="content__list__title">{item.title}</span>
                             <br />
                             <br />  
                             <p>
@@ -57,8 +63,9 @@ function SearchedBookmark(props) {
                         <div>검색 결과가 존재하지 않습니다.</div>
                     }
                 </div>
-
+                <div className="pagination"><Pagination totalCount = {resultItems && resultItems.length}/></div>
             </div>
+            
 
         </React.Fragment>
     )

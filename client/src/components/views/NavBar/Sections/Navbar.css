@@ -15,11 +15,13 @@
 
 /**** Brand Menu ****/
 .menu-brand {
-  padding: 0px 0px 5px 0px;
+  padding: 0px 0px 0px 0px;
   flex-direction: row;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #dcdcdc;
 }
 .container {
   width: 70%;
