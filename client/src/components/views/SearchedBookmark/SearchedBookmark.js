@@ -12,6 +12,8 @@ function SearchedBookmark(props) {
 
     const searchVariable = props.match.params.input;
     const [resultItems, setresultItems] = useState(null)
+    const [currentItems, setcurrentItems] = useState(null)
+    const [itemsPerPage, setitemsPerPage] = useState(10)
 
 
     
@@ -23,6 +25,7 @@ function SearchedBookmark(props) {
                 setresultItems(response.data.result)
                 console.log(response.data.result)
 
+                setcurrentItems(response.data.result.slice(0, itemsPerPage))
 
             } else {
                 alert("검색 결과를 가져오는 것에 실패했습니다.")
@@ -45,7 +48,7 @@ function SearchedBookmark(props) {
 
                 <div className="content">
                     <h3 className="content__title">Bookmark List <span className="content__title__itemNum">{resultItems && resultItems.length} items</span></h3>
-                    {resultItems && resultItems.length > 0 && resultItems.map((item, index) => {
+                    {currentItems && currentItems.length > 0 && currentItems.map((item, index) => {
                         return <div key={index} className="content__list">
                             <span className="content__list__title">{item.title}</span>
                             <br />
@@ -59,11 +62,11 @@ function SearchedBookmark(props) {
                         </div>
                     })
                     }
-                    {resultItems && resultItems.length == 0 &&
+                    {currentItems && currentItems.length == 0 &&
                         <div>검색 결과가 존재하지 않습니다.</div>
                     }
                 </div>
-                <div className="pagination"><Pagination totalCount = {resultItems && resultItems.length}/></div>
+                <div className="pagination"><Pagination totalCount = {resultItems && parseInt(resultItems.length / 10) + 1} items = {resultItems} setcurrentItems = {setcurrentItems}/></div>
             </div>
             
 

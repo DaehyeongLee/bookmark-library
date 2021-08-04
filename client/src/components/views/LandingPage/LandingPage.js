@@ -45,7 +45,7 @@ function LandingPage(props) {
                             </Form.Item>
                         </Col>
                         <Col className="gutter-row" span={5}>
-                            <div className="bookmark_search_btn"><Button type="primary" onClick={onSubmit}><span class="fas fa-search"></span>Search</Button></div>
+                            <div className="bookmark_search_btn"><Button type="primary" onClick={onSubmit}><span className="fas fa-search"></span>Search</Button></div>
                             {/* To Do: Search Icon */}
                         </Col>
                     </Row>                    
