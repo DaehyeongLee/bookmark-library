@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Col, Row } from 'antd';
 import { withRouter, Link } from 'react-router-dom';
 import SelectedTitle from '../Commons/SelectedTitle';
 import Pagination from '../Commons/util/Pagination';
@@ -15,8 +16,14 @@ function SearchedBookmark(props) {
     const [currentItems, setcurrentItems] = useState(null)
     const [itemsPerPage, setitemsPerPage] = useState(10)
 
-
-    
+    const PerPageOptions = [
+        { value: 5, label: "5" },
+        { value: 10, label: "10" },
+        { value: 20, label: "20" }
+    ]
+    const onPerPageChange = (e) => {
+        setitemsPerPage(e.currentTarget.value)
+    }
 
     useEffect(() => {
         axios.post('/api/bookmark/searchBookmark', { searchInput: searchVariable }).then(response => {
@@ -31,7 +38,7 @@ function SearchedBookmark(props) {
                 alert("검색 결과를 가져오는 것에 실패했습니다.")
             }
         })
-    }, [])
+    }, [itemsPerPage])
 
 
     return (
@@ -52,13 +59,13 @@ function SearchedBookmark(props) {
                         return <div key={index} className="content__list">
                             <span className="content__list__title">{item.title}</span>
                             <br />
-                            <br />  
+                            <br />
                             <p>
                                 Writer Name: <strong>{item.writer.name}</strong>
                                 <br />
                                 Upload Date: <strong>{/*To do: Time stamp Update */}</strong>
                             </p>
-                            <Link style={{fontSize: '15px'}}to={`/bookmark/detail/${item._id}`}>▶ Detail</Link>
+                            <Link style={{ fontSize: '15px' }} to={`/bookmark/detail/${item._id}`}>▶ Detail</Link>
                         </div>
                     })
                     }
@@ -66,9 +73,31 @@ function SearchedBookmark(props) {
                         <div>검색 결과가 존재하지 않습니다.</div>
                     }
                 </div>
-                <div className="pagination"><Pagination totalCount = {resultItems && parseInt(resultItems.length / 10) + 1} items = {resultItems} setcurrentItems = {setcurrentItems}/></div>
+                <Row gutter={16}>
+                    <Col span={6}>
+                        <div className="pagination">
+                            <Pagination
+                                totalCount={resultItems && parseInt(resultItems.length / itemsPerPage) + 1}
+                                items={resultItems}
+                                setcurrentItems={setcurrentItems}
+                                itemsPerPage={itemsPerPage}
+                            />
+                        </div>
+                    </Col>
+                    <Col span={18}>
+                        <select className="page_dropdown" onChange={onPerPageChange}>
+                            {PerPageOptions.map((item, index) => {
+                                if (item.value == 10) {
+                                    return <option key={index} value={item.value} selected>{item.label}</option>
+                                } else {
+                                    return <option key={index} value={item.value}>{item.label}</option>
+                                }                                
+                            })}
+                        </select>
+                    </Col>
+                </Row>
             </div>
-            
+
 
         </React.Fragment>
     )

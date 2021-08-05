@@ -7,6 +7,7 @@ import Material_Pagination from '@material-ui/lab/Pagination';
 //1. props.totalCount
 //2. props.setcurrentItems
 //3. props.items //All items list
+//4. props.itemsPerPage //Items number per page
 function Pagination(props) {
 
     const useStyles = makeStyles((theme) => ({
@@ -21,7 +22,7 @@ function Pagination(props) {
 
     const onChangeHandler = (event, number) => {
 
-        props.setcurrentItems(props.items.slice(10 * (number - 1), 10 * number))
+        props.setcurrentItems(props.items.slice(props.itemsPerPage * (number - 1), props.itemsPerPage * number))
     }
 
 

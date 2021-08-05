@@ -40,3 +40,9 @@
 .pagination {
     padding-bottom: 30px;
 }
+.page_dropdown {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    
+    padding: 2px;
+}
