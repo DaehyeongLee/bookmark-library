@@ -1,20 +1,22 @@
-.bookmark_select_btn {
-    
-    float: right;
-    margin: 15px 5px;
-    
-}
-.bookmark_body {
-    padding: 20px;
+.panel {
+    /* width: 50vh;
+    float: left;
+    margin-right: 30px; */
+    padding: 0px 20px !important;
 }
 
-.bookmark_panel {
-    width: 50vh;
-    float: left;
-    margin-right: 30px;
-}
-.bookmark_selectedPanel {
-    width: 50vh;
+.selected {
+    /* width: 50vh;
     float: right;
-    margin-left: 30px;
+    margin-left: 30px; */
+    padding: 0px 20px !important;
+}
+.selected .ant-form {
+    width: 100% !important;
+}
+
+.upload_btn {
+    margin: 10px 0px 0px 0px;
+    display: flex;
+    justify-content: flex-end;
 }
