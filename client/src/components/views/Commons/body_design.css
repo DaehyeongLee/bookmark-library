@@ -3,3 +3,13 @@
     height: 50vh;
     padding-top: 100px;
 }
+
+.result-msg {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: #e0ebfb;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: black;
+}

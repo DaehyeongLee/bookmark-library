@@ -1,19 +1,9 @@
-.result-msg {
-    padding: 10px 20px;
-    background-color: #e0ebfb;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    color: black;
-}
-
 .result-msg__em-tag {
     font-weight: bold;
     color: #F7931D;
 }
 
 .content {
-    margin-top: 10px;
     padding: 20px 0px;
 }
 .content__title {

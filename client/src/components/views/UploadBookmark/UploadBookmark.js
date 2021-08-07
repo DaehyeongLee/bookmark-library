@@ -71,6 +71,10 @@ function Bookmark() {
 
                     alert('성공적으로 업로드 되었습니다.')
 
+                    setisSelectedBookmark(false);
+                    setselectedBookmark(null);
+                    setbookmarkTitle("");
+                    setbookmarkDescription("");
 
                 } else {
                     alert('북마크 업로드에 실패했습니다.')
@@ -86,7 +90,10 @@ function Bookmark() {
             <div className="Result-body">
                 <Row gutter={16}>
                     <Col className="panel" span={12}>
-                        <h4>My chrome bookmark list :</h4> <br />
+                        <div className="result-msg">
+                            My Chrome Bookmark List <br />
+                        </div>
+
                         {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
                             if (item.type == "folder") {
                                 return <React.Fragment key={index}>
@@ -105,32 +112,39 @@ function Bookmark() {
                         }
                     </Col>
                     <Col className="selected" span={12}>
+                        <div className="result-msg">
+                            The Detail of Selected Bookmark <br />
+                        </div>
                         {isSelectedBookmark &&
-                            <Form onSubmit={onSubmit}>
-                                <Form.Item
-                                    label="Bookmark Detail List"
-                                    name="Bookmark Detail List"
-                                >
-                                    {selectedBookmark && isSelectedBookmark && selectedBookmark.map((item, index) => {
-                                        return <div key={index}>{index + 1}.&nbsp;&nbsp;&nbsp;<a href={item.url} target="_blank">{item.name}</a></div>
-                                    })}
-                                </Form.Item>
-                                <Form.Item
-                                    label="Title"
-                                    name="Title"
-                                    rules={[{ required: true, message: 'Please input title' }]}
-                                >
-                                    <Input onChange={onTitleChange} value={bookmarkTitle} />
-                                </Form.Item>
-                                <Form.Item
-                                    label="Description"
-                                    name="Description"
-                                    rules={[{ required: true, message: 'Please input description' }]}
-                                >
-                                    <TextArea onChange={onDescriptionChange} value={bookmarkDescription} />
-                                </Form.Item>
-                                <div className="upload_btn"><Button type="primary" onClick={onSubmit}>Upload</Button></div>
-                            </Form>
+                            <div className="selected-body">
+
+                                <Form onSubmit={onSubmit}>
+                                    <Form.Item>
+                                        {selectedBookmark && isSelectedBookmark && selectedBookmark.map((item, index) => {
+                                            return <div className="selected-body__item">
+                                                <div key={index}><a href={item.url} target="_blank">{item.name}</a></div>
+
+                                            </div>
+                                        })}
+                                    </Form.Item>
+                                    <Form.Item
+                                        label="Title"
+                                        name="Title"
+                                        rules={[{ required: true, message: 'Please input title' }]}
+                                    >
+                                        <Input onChange={onTitleChange} value={bookmarkTitle} />
+                                    </Form.Item>
+                                    <Form.Item
+                                        label="Description"
+                                        name="Description"
+                                        rules={[{ required: true, message: 'Please input description' }]}
+                                    >
+                                        <TextArea onChange={onDescriptionChange} value={bookmarkDescription} />
+                                    </Form.Item>
+                                    <div className="upload_btn"><Button type="primary" onClick={onSubmit}>Upload</Button></div>
+                                </Form>
+
+                            </div>
                         }
                     </Col>
                 </Row>

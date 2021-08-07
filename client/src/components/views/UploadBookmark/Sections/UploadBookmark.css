@@ -2,17 +2,27 @@
     /* width: 50vh;
     float: left;
     margin-right: 30px; */
-    padding: 0px 20px !important;
+    padding: 0px 20px 50px 20px !important;
 }
 
 .selected {
     /* width: 50vh;
     float: right;
     margin-left: 30px; */
-    padding: 0px 20px !important;
+    padding: 0px 20px 50px 20px !important;
+}
+.selected-body {
+    border-top: 1px solid #bbb;
+}
+.selected-body__item {
+    border-bottom: 1px solid #dcdcdc;
+    padding: 0px 10px;
 }
 .selected .ant-form {
     width: 100% !important;
+}
+.selected .ant-form-item {
+    margin-bottom: 5px;
 }
 
 .upload_btn {
