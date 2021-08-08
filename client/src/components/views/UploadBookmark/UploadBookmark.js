@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SelectedTitle from '../Commons/SelectedTitle';
 import { useSelector } from 'react-redux';
-//mport { Container, Row, Col } from 'reactstrap';
 import { Collapse, Button, Input, Row, Col, Form } from 'antd';
 import './Sections/UploadBookmark.css';
 import '../Commons/body_design.css';

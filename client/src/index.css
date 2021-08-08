@@ -1,17 +1,16 @@
-body {
+/* body {
   margin: 0;
     font-family: "Muli", "Noto Sans KR", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: 'Paybooc-Medium' !important;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: 'Paybooc-Medium' !important;
   font-size: 14px;
   line-height: 1.5;
   color: #24292e;
@@ -44,4 +43,17 @@ input.error {
 .ant-btn-primary:hover {
   background-color : #c56c07 !important;
   border : 1px solid #c56c07 !important;
+}
+
+@font-face {
+  font-family: 'Wemakeprice-Regular';
+  src: url('./fonts/WeMakePriceTTF/Wemakeprice-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Paybooc-Medium';
+  src: url('./fonts/PayboocTTF/paybooc\ Medium.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
