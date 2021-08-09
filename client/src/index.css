@@ -6,17 +6,16 @@
 } */
 
 code {
-  font-family: 'Paybooc-Medium' !important;
+  font-family: "Muli", "Noto Sans KR", sans-serif !important;
 }
 
 body {
-  font-family: 'Paybooc-Medium' !important;
+  font-family: "Muli", "Noto Sans KR", sans-serif !important;
   font-size: 14px;
   line-height: 1.5;
   color: #24292e;
   background-color: #fff;
 }
-
 .app {
   flex-direction: column;
   display: flex;

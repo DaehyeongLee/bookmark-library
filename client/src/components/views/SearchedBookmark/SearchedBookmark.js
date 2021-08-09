@@ -53,11 +53,11 @@ function SearchedBookmark(props) {
                     Search result with keyword &nbsp;<em className="result-msg__em-tag">{searchVariable}</em>
                 </div>
 
-                <div className="content">
-                    <h3 className="content__title">Bookmark List <span className="content__title__itemNum">{resultItems && resultItems.length} items</span></h3>
+                <div className="searched-content">
+                    <h3 className="searched-content__title">Bookmark List <span className="searched-content__title__itemNum">{resultItems && resultItems.length} items</span></h3>
                     {currentItems && currentItems.length > 0 && currentItems.map((item, index) => {
-                        return <div key={index} className="content__list">
-                            <span className="content__list__title">{item.title}</span>
+                        return <div key={index} className="searched-content__list">
+                            <span className="searched-content__list__title">{item.title}</span>
                             <br />
                             <br />
                             <p>

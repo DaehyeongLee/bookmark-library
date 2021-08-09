@@ -7,13 +7,13 @@
 }
 .search_input input {
     height: 45px;
-    font-size: 20px;
+    font-size: 15px;
 }
 .search_label {
     background-color: #58595B;
     border-radius: 3px;
     height: 45px;
-    font-size: 1rem;
+    font-size: 15px;
     justify-content: center;
     color: white;
     align-items: center;
@@ -22,7 +22,7 @@
 .bookmark_search_btn button {
     border-radius: 3px;
     height: 45px;
-    font-size: 1rem;
+    font-size: 15px;
     justify-content: center;
     color: white;
     align-items: center;

@@ -10,6 +10,10 @@ function DetailedBookmark(props) {
     const [detailTitle, setdetailTitle] = useState("")
     const [detailDescription, setdetailDescription] = useState("")
 
+    const goBack = () => {
+        props.history.goBack()
+    }
+
     useEffect(() => {
         axios.post('/api/bookmark/detailedBookmark', { bookmarkId: detailItemId }).then(response => {
             if (response.data.success) {
@@ -28,11 +32,14 @@ function DetailedBookmark(props) {
 
 
     return (
-        <div style={{ width: '100%', margin: '0', padding: '0' }}>
-            
 
-            <div className="Result-body">
+        <div className="Result-body Result-body-padding">
 
+            <div className="result-msg result-msg__content">
+                <a className="result-msg__goBack" onClick={goBack}>&lsaquo;&nbsp;Return to previous results</a>
+            </div>
+
+            <div className="detail-content">
                 {detailTitle &&
                     <div className="detail-text">Title: {detailTitle} </div>
                 }
@@ -50,6 +57,7 @@ function DetailedBookmark(props) {
                 }
             </div>
         </div>
+
     )
 }
 

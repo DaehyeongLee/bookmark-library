@@ -3,26 +3,32 @@
     color: #F7931D;
 }
 
-.content {
+.searched-content {
     padding: 20px 0px;
 }
-.content__title {
+.searched-content a {
+    color: black;
+}
+.searched-content a:hover {
+    color: #c56c07;
+}
+.searched-content__title {
     border-bottom: 1px solid #bbb;
     padding: 15px 0px;
     color: black;
     font-size: 22px;
     display: block;
 }
-.content__title__itemNum {
+.searched-content__title__itemNum {
     font-size: 14px;
     padding: 0px 15px;
     color: #707070;
 }
-.content__list {
+.searched-content__list {
     padding: 20px 10px;
     border-bottom: 1px solid #dcdcdc;
 }
-.content__list__title {
+.searched-content__list__title {
     font-size: 16px;
     color: #F7931D;
     font-weight: bold;

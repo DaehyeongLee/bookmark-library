@@ -1,4 +1,27 @@
+.Result-body-padding {
+    padding-top: 30px;
+}
+
 .detail-text {
     font-size : 1rem;
     padding : 3px;
+}
+
+.result-msg__content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.result-msg__goBack {
+    color: black;
+}
+.result-msg__goBack:hover {
+    color: #F7931D;
+}
+
+.detail-content a {
+    color: #F7931D;
+}
+.detail-content a:hover {
+    color: #c56c07;
 }
