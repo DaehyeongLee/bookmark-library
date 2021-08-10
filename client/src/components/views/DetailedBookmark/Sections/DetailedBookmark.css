@@ -1,5 +1,5 @@
 .Result-body-padding {
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 .detail-text {
@@ -19,9 +19,33 @@
     color: #F7931D;
 }
 
+.detail-content {
+    padding: 20px 0px;
+    border-bottom: 2px solid #dedede;
+}
 .detail-content a {
     color: #F7931D;
 }
 .detail-content a:hover {
     color: #c56c07;
+}
+
+.detail-content__title {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.detail-content__info {
+    display: flex;
+    padding-bottom: 12px;
+}
+.detail-content__info__key {
+    font-size: 14px;
+    line-height: 22.5px;
+    color: #555;
+    width: 150px;
+}
+.detail-content__info__value {
+    font-size: 15px;
+    font-weight: bold;
 }

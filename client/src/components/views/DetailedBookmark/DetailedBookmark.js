@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
+import {ConvertDate} from '../Commons/util/ConvertDate';
 import '../Commons/body_design.css';
 import './Sections/DetailedBookmark.css';
 
@@ -9,6 +11,8 @@ function DetailedBookmark(props) {
     const [datailItems, setdatailItems] = useState(null)
     const [detailTitle, setdetailTitle] = useState("")
     const [detailDescription, setdetailDescription] = useState("")
+    const [detailCreatedDate, setdetailCreatedDate] = useState("")
+    const [detailWriter, setdetailWriter] = useState(null)
 
     const goBack = () => {
         props.history.goBack()
@@ -23,6 +27,8 @@ function DetailedBookmark(props) {
                 setdatailItems(JSON.parse(response.data.result[0].bookmark))
                 setdetailTitle(response.data.result[0].title)
                 setdetailDescription(response.data.result[0].description)
+                setdetailCreatedDate(response.data.result[0].createdAt)
+                setdetailWriter(response.data.result[0].writer)
 
             } else {
                 alert("상세 결과를 가져오는 것에 실패했습니다.")
@@ -30,6 +36,14 @@ function DetailedBookmark(props) {
         })
     }, [])
 
+    const renderDetailContentInfo = (key, value) => {
+        return (
+            <div className="detail-content__info">
+                <div className="detail-content__info__key">{key}</div>
+                <div className="detail-content__info__value">{value}</div>
+            </div>
+        )
+    }
 
     return (
 
@@ -41,21 +55,24 @@ function DetailedBookmark(props) {
 
             <div className="detail-content">
                 {detailTitle &&
-                    <div className="detail-text">Title: {detailTitle} </div>
+                    <h2 className="detail-content__title"> {detailTitle} </h2>
                 }
-                {detailDescription &&
-                    <div className="detail-text">Description: {detailDescription} </div>
-                }
-                <br />
-                <br />
-                {datailItems && datailItems.length > 0 && datailItems.map((item, index) => {
-                    return <div key={index}>
-                        <div>{index + 1}. Name: {item.name} &nbsp; URL: <a href={item.url} target="_blank">{item.url}</a></div>
-                        <br />
-                    </div>
-                })
-                }
+
+                {renderDetailContentInfo("Browser", "Chrome")}
+                {detailWriter && renderDetailContentInfo("Writer", detailWriter.name)}
+                {detailWriter && renderDetailContentInfo("Writer Email", detailWriter.email)}
+                {detailCreatedDate && renderDetailContentInfo("Upload Date", ConvertDate(detailCreatedDate))}
+                {detailDescription && renderDetailContentInfo("Description", detailDescription)}
+
             </div>
+
+            {datailItems && datailItems.length > 0 && datailItems.map((item, index) => {
+                return <div key={index}>
+                    <div>{index + 1}. Name: {item.name} &nbsp; URL: <a href={item.url} target="_blank">{item.url}</a></div>
+                    <br />
+                </div>
+            })
+            }
         </div>
 
     )

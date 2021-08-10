@@ -3,7 +3,9 @@ import axios from 'axios';
 import { Col, Row } from 'antd';
 import { withRouter, Link } from 'react-router-dom';
 import SelectedTitle from '../Commons/SelectedTitle';
-import Pagination from '../Commons/util/Pagination';
+import Pagination from '../Commons/Pagination';
+
+import {ConvertDate} from '../Commons/util/ConvertDate';
 import './Sections/SearchedBookmark.css';
 import '../Commons/body_design.css';
 
@@ -63,7 +65,7 @@ function SearchedBookmark(props) {
                             <p>
                                 Writer Name: <strong>{item.writer.name}</strong>
                                 <br />
-                                Upload Date: <strong>{/*To do: Time stamp Update */}</strong>
+                                Upload Date: <strong>{ConvertDate(item.createdAt)}</strong>
                             </p>
                             <Link style={{ fontSize: '15px' }} to={`/bookmark/detail/${item._id}`}>▶ Detail</Link>
                         </div>
