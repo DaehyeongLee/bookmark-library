@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Button, Input, Form, Col, Row } from 'antd';
 import MainImage from './Sections/MainImage';
 import './Sections/LandingPage.css';
-import bannerImg from '../../../images/landing-banner.jpg';
-
+import bannerImg from '../../../assets/images/landing-banner.jpg';
 
 function LandingPage(props) {
 

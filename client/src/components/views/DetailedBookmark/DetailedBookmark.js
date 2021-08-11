@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import {ConvertDate} from '../Commons/util/ConvertDate';
+import { ConvertDate } from '../Commons/util/ConvertDate';
 import '../Commons/body_design.css';
 import './Sections/DetailedBookmark.css';
 
@@ -66,13 +66,29 @@ function DetailedBookmark(props) {
 
             </div>
 
-            {datailItems && datailItems.length > 0 && datailItems.map((item, index) => {
-                return <div key={index}>
-                    <div>{index + 1}. Name: {item.name} &nbsp; URL: <a href={item.url} target="_blank">{item.url}</a></div>
-                    <br />
+            <div className="detail-linkTable">
+                <div className="detail-linkTable__title">Included Links</div>
+                <div className="detail-linkTable__table">
+                    <table>
+                        <thead>
+                            <th style={{ width: '5%' }}>No.</th>
+                            <th style={{ width: '30%' }}>Name</th>
+                            <th style={{ width: '65%' }}>URL</th>
+                        </thead>
+
+                        <tbody>
+                            {datailItems && datailItems.length > 0 && datailItems.map((item, index) => {
+                                return (<tr key={index}>
+                                    <td style={{ width: '5%', textAlign: 'center' }}>{index + 1}</td>
+                                    <td style={{ width: '30%' }}>{item.name}</td>
+                                    <td style={{ width: '65%' }}><a href={item.url} target="_blank">{item.url}</a></td>
+                                </tr>)
+                            })
+                            }
+                        </tbody>
+                    </table>
                 </div>
-            })
-            }
+            </div>
         </div>
 
     )

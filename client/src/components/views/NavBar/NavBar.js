@@ -3,7 +3,7 @@ import LeftMenu from './Sections/LeftMenu';
 import RightMenu from './Sections/RightMenu';
 import { Drawer, Button, Icon } from 'antd';
 import './Sections/Navbar.css';
-import logo_img from '../../../images/logo.png';
+import logo_img from '../../../assets/images/logo.png';
 
 function NavBar() {
   const [visible, setVisible] = useState(false)

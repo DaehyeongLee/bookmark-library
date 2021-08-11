@@ -3,8 +3,6 @@
 
 dev.js
 
-
-
 .DS_Store
 
 npm-debug.log*
@@ -14,3 +12,5 @@ yarn-error.log*
 .vscode
 
 chatbot-app-314712-a210359f539b.json
+
+Service-KeyPair.pem
