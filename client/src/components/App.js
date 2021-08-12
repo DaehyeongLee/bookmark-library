@@ -8,6 +8,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import Chatbot from "./views/Chatbot/Chatbot";
+import ChatbotBtn from "./views/Chatbot/ChatbotBtn";
 import UploadBookmark from "./views/UploadBookmark/UploadBookmark";
 import SearchedBookmark from "./views/SearchedBookmark/SearchedBookmark";
 import DetailedBookmark from "./views/DetailedBookmark/DetailedBookmark";
@@ -32,6 +33,7 @@ function App() {
         </Switch>
       </div>
       <Footer />
+      <ChatbotBtn/>
     </Suspense>
   );
 }

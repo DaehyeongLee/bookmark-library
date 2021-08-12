@@ -5,6 +5,7 @@ import { saveMessage } from '../../../_actions/message_actions';
 import Message from './Sections/Message';
 import Card from './Sections/Card';
 import {List, Icon, Avatar} from 'antd';
+import '../Commons/body_design.css';
 
 function Chatbot() {
     const dispatch = useDispatch();
@@ -162,7 +163,7 @@ function Chatbot() {
     }
 
     return (
-        <div className = "app" >
+        <div className = "Result-body" >
         <div style={{
             height: 700, width: 700,
             border: '3px solid black', borderRadius: '7px'

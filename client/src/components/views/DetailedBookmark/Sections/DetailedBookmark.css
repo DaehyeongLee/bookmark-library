@@ -18,7 +18,7 @@
 
 /* Detail - Content */
 .detail-content {
-    padding: 20px 0px;
+    padding: 20px 10px !important;
     border-bottom: 2px solid #dedede;
 }
 .detail-content a {
@@ -49,7 +49,7 @@
 
 /* Detail - Link Table */
 .detail-linkTable {
-    padding-top: 50px;
+    padding: 50px 0px !important;
 }
 .detail-linkTable__title {
     font-size: 22px;

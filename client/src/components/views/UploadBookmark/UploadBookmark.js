@@ -19,9 +19,6 @@ function Bookmark() {
     const [bookmarkTitle, setbookmarkTitle] = useState("")
     const [bookmarkDescription, setbookmarkDescription] = useState("")
 
-    //console.log(result)
-
-
     useEffect(() => {
         axios.post('/api/bookmark/getUsername').then(response => {
             if (response.data.success) {
