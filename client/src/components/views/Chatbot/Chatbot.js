@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveMessage } from '../../../_actions/message_actions';
 import Message from './Sections/Message';
 import Card from './Sections/Card';
-import {List, Icon, Avatar} from 'antd';
+import { List, Icon, Avatar } from 'antd';
 import '../Commons/body_design.css';
+import './Sections/Chatbot.css';
 
 function Chatbot() {
     const dispatch = useDispatch();
@@ -118,9 +119,9 @@ function Chatbot() {
     }
 
     const renderCards = (cards) => {
-        
+
         return cards.map((card, i) => {
-            return <Card key = {i} cardInfo={card.structValue} />
+            return <Card key={i} cardInfo={card.structValue} />
         })
     }
 
@@ -130,7 +131,7 @@ function Chatbot() {
         //template for normal text
         if (message.content && message.content.text && message.content.text.text) {
             return <Message key={i} who={message.who} text={message.content.text.text} />
-        } 
+        }
         //template for card message
         //Card를 표시하기 위한 정보들은 dialogflow에서 json형식으로 보냄
         //이에 경우 다른 payload 사용 필요
@@ -148,7 +149,7 @@ function Chatbot() {
             </List.Item>
         }
 
-        
+
     }
 
     const renderMessage = (returnedMessages) => {
@@ -163,26 +164,20 @@ function Chatbot() {
     }
 
     return (
-        <div className = "Result-body" >
-        <div style={{
-            height: '100%', width: '100%',
-            border: '3px solid black', borderRadius: '7px'
-        }}>
-            <div style={{ height: 644, width: '100%', overflow: 'auto' }}>
-                {renderMessage(messagesFromRedux)}
-            </div>
+        <React.Fragment>
+            <div className="Chatbot-Header">Bookmark Library Chatbot</div>
+            <div className="Chatbot-Content">
+                <div className="Chatbot-Content__message">
+                    {renderMessage(messagesFromRedux)}
+                </div>
 
-            <input
-                style={{
-                    margin: 0, width: '100%', height: 50,
-                    borderRadius: '4px', padding: '5px', fontSize: '1rem'
-                }}
-                placeholder="Enter a message.."
-                onKeyPress={keyPressHandler}
-                type="text"
-            />
-        </div>
-        </div>
+                <input className="Chatbot-Content__input"
+                    placeholder="Enter a message.."
+                    onKeyPress={keyPressHandler}
+                    type="text"
+                />
+            </div>
+        </React.Fragment>
     )
 }
 

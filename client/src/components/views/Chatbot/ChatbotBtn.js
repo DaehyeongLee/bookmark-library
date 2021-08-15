@@ -16,12 +16,12 @@ function ChatbotBtn() {
                 <div style={{
                     width: "350px",
                     height: "600px",
-                    backgroundColor: "white",
                     borderRadius: "5px",
                     position: "fixed",
                     right: "40px",
                     bottom: "103px",
-                    zIndex: "21474830000"
+                    zIndex: "21474830000",
+                    boxShadow: "0 2px 16px 0 rgb(0 0 0 / 10%)"
                 }}>
                     <Chatbot />
                 </div>
