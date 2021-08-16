@@ -10,6 +10,13 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+.Chatbot-Header__backBtn {
+    background-color: #F7931D !important;
+    cursor: pointer;
+}
+.Chatbot-Header__backBtn:hover {
+    box-shadow: 0 2px 16px 0 rgb(0 0 0 / 10%);
+}
 .Chatbot-Content {
     height: 80%;
     width: 100%;

@@ -23,7 +23,7 @@ function ChatbotBtn() {
                     zIndex: "21474830000",
                     boxShadow: "0 2px 16px 0 rgb(0 0 0 / 10%)"
                 }}>
-                    <Chatbot />
+                    <Chatbot toggle={setChatToggle}/>
                 </div>
             }
             <div style={{

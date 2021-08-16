@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveMessage } from '../../../_actions/message_actions';
 import Message from './Sections/Message';
 import Card from './Sections/Card';
-import { List, Icon, Avatar } from 'antd';
+import { List, Icon, Avatar, Button } from 'antd';
 import '../Commons/body_design.css';
 import './Sections/Chatbot.css';
+import backIcon from '../../../assets/images/back_icon_white.png'
 
-function Chatbot() {
+function Chatbot(props) {
     const dispatch = useDispatch();
     const messagesFromRedux = useSelector(state => state.message.messages) //redux에 저장된 message 목록 불러옴
 
@@ -148,8 +149,6 @@ function Chatbot() {
 
             </List.Item>
         }
-
-
     }
 
     const renderMessage = (returnedMessages) => {
@@ -163,9 +162,17 @@ function Chatbot() {
         }
     }
 
+    const onbackBtnClickHandler = () => {
+        props.toggle(false)
+    }
+
     return (
         <React.Fragment>
-            <div className="Chatbot-Header">Bookmark Library Chatbot</div>
+            {/*To do: 챗봇 밖 클릭 시 챗봇 닫힘, 닫았다가 다시 열었을 시 챗봇 대화기록 처음부터 시작 */}
+            <div className="Chatbot-Header">
+                <span className="Chatbot-Header__backBtn" onClick={onbackBtnClickHandler}><img style={{width: '14px'}}src={backIcon} /></span>
+                &nbsp;&nbsp;Bookmark Library Chatbot
+                </div>
             <div className="Chatbot-Content">
                 <div className="Chatbot-Content__message">
                     {renderMessage(messagesFromRedux)}
@@ -176,6 +183,7 @@ function Chatbot() {
                     onKeyPress={keyPressHandler}
                     type="text"
                 />
+                {/*To do : 전송 버튼 넣기 */}
             </div>
         </React.Fragment>
     )
