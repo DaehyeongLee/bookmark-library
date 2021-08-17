@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveMessage } from '../../../_actions/message_actions';
@@ -7,11 +7,14 @@ import Card from './Sections/Card';
 import { List, Icon, Avatar, Button } from 'antd';
 import '../Commons/body_design.css';
 import './Sections/Chatbot.css';
-import backIcon from '../../../assets/images/back_icon_white.png'
+import backIcon from '../../../assets/images/back_icon_white.png';
+import sendIcon from '../../../assets/images/send_icon.png';
 
 function Chatbot(props) {
     const dispatch = useDispatch();
     const messagesFromRedux = useSelector(state => state.message.messages) //redux에 저장된 message 목록 불러옴
+
+    const [inputText, setinputText] = useState("")
 
     useEffect(() => {
         eventQuery('WelcomMessage')
@@ -116,6 +119,7 @@ function Chatbot(props) {
             textQuery(e.target.value);
 
             e.target.value = ""; //입력했던 값 초기화
+            setinputText("");
         }
     }
 
@@ -162,15 +166,27 @@ function Chatbot(props) {
         }
     }
 
+    const oninputTextChangeHandler = (e) => {
+        setinputText(e.currentTarget.value)
+    }
     const onbackBtnClickHandler = () => {
         props.toggle(false)
+    }
+    const onsubmitBtnClickHandler = () => {
+        if (inputText.length > 0) {
+            textQuery(inputText);
+
+            setinputText("")
+        } else {
+            alert('Need to type something')
+        }
     }
 
     return (
         <React.Fragment>
             {/*To do: 챗봇 밖 클릭 시 챗봇 닫힘, 닫았다가 다시 열었을 시 챗봇 대화기록 처음부터 시작 */}
             <div className="Chatbot-Header">
-                <span className="Chatbot-Header__backBtn" onClick={onbackBtnClickHandler}><img style={{width: '14px'}}src={backIcon} /></span>
+                <span className="Chatbot-Header__backBtn" onClick={onbackBtnClickHandler}><img style={{ width: '14px' }} src={backIcon} /></span>
                 &nbsp;&nbsp;Bookmark Library Chatbot
                 </div>
             <div className="Chatbot-Content">
@@ -178,12 +194,16 @@ function Chatbot(props) {
                     {renderMessage(messagesFromRedux)}
                 </div>
 
-                <input className="Chatbot-Content__input"
-                    placeholder="Enter a message.."
-                    onKeyPress={keyPressHandler}
-                    type="text"
-                />
-                {/*To do : 전송 버튼 넣기 */}
+                <div className="Chatbot-Content__input">
+                    <input className="Chatbot-Content__inputfield"
+                        placeholder="Enter a message.."
+                        onKeyPress={keyPressHandler}
+                        type="text"
+                        value={inputText}
+                        onChange={oninputTextChangeHandler}
+                    />
+                    <span onClick={onsubmitBtnClickHandler}><img className="Chatbot-Content__inputSubmitBtn" src={sendIcon} /></span>
+                </div>
             </div>
         </React.Fragment>
     )

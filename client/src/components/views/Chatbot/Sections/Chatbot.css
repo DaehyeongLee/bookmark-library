@@ -34,10 +34,25 @@
     margin: 0;
     width: 100%;
     height: 12%;
-    padding: 5px;
+    padding: 0px 15px;
     font-Size: 1rem;
     border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.Chatbot-Content__input:focus{
+.Chatbot-Content__inputfield {
     outline: none;
+    border: none;
+}
+.Chatbot-Content__inputfield:focus{
+    outline: none;
+    border: none;
+}
+.Chatbot-Content__inputSubmitBtn {
+    width: 24px;
+    cursor: pointer;
+}
+.Chatbot-Content__inputSubmitBtn:hover {
+    box-shadow: 0 2px 16px 0 rgb(0 0 0 / 10%);
 }
