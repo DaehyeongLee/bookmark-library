@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveMessage } from '../../../_actions/message_actions';
@@ -12,7 +12,7 @@ import sendIcon from '../../../assets/images/send_icon.png';
 
 function Chatbot(props) {
     const dispatch = useDispatch();
-    const messagesFromRedux = useSelector(state => state.message.messages) //redux에 저장된 message 목록 불러옴
+    let messagesFromRedux = useSelector(state => state.message.messages) //redux에 저장된 message 목록 불러옴
 
     const [inputText, setinputText] = useState("")
 
@@ -182,9 +182,28 @@ function Chatbot(props) {
         }
     }
 
+    //외부 클릭 시 챗봇 닫힘 Func
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    props.toggle(false)
+                }
+            }    
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+
+    const chatbotUI = useRef(null);
+    useOutsideAlerter(chatbotUI)
+
     return (
-        <React.Fragment>
-            {/*To do: 챗봇 밖 클릭 시 챗봇 닫힘, 닫았다가 다시 열었을 시 챗봇 대화기록 처음부터 시작 */}
+        <div style={{height: '100%'}} ref={chatbotUI}>
             <div className="Chatbot-Header">
                 <span className="Chatbot-Header__backBtn" onClick={onbackBtnClickHandler}><img style={{ width: '14px' }} src={backIcon} /></span>
                 &nbsp;&nbsp;Bookmark Library Chatbot
@@ -205,7 +224,7 @@ function Chatbot(props) {
                     <span onClick={onsubmitBtnClickHandler}><img className="Chatbot-Content__inputSubmitBtn" src={sendIcon} /></span>
                 </div>
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 

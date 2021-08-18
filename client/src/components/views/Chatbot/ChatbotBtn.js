@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Chatbot from './Chatbot'
 import chat_icon from '../../../assets/images/chat_white.png'
 
 function ChatbotBtn() {
 
-     const [ChatToggle, setChatToggle] = useState(false)
+    const [ChatToggle, setChatToggle] = useState(false)
 
     const onClickHandler = () => {
         setChatToggle(true)
