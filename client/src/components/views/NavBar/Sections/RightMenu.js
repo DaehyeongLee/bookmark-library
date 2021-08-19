@@ -33,8 +33,8 @@ function RightMenu(props) {
   } else {
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="chat">
-          <a href="/chat">CHATBOT</a>
+        <Menu.Item key="profile">
+          <a href="/profile">PROFILE</a>
         </Menu.Item>
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>LOGOUT</a>

@@ -7,7 +7,6 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
-import Chatbot from "./views/Chatbot/Chatbot";
 import ChatbotBtn from "./views/Chatbot/ChatbotBtn";
 import UploadBookmark from "./views/UploadBookmark/UploadBookmark";
 import SearchedBookmark from "./views/SearchedBookmark/SearchedBookmark";
@@ -26,7 +25,6 @@ function App() {
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/chat" component={Auth(Chatbot, true)} />
           <Route exact path="/bookmark/upload" component={Auth(UploadBookmark, true)} />
           <Route exact path="/bookmark/search-result/:input" component={Auth(SearchedBookmark, null)} />
           <Route exact path="/bookmark/detail/:item" component={Auth(DetailedBookmark, null)} />

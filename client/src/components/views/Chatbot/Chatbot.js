@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveMessage } from '../../../_actions/message_actions';
 import Message from './Sections/Message';
 import Card from './Sections/Card';
+import {ClickOutside} from '../Commons/util/ClickOutside';
 import { List, Icon, Avatar, Button } from 'antd';
 import '../Commons/body_design.css';
 import './Sections/Chatbot.css';
@@ -182,25 +183,9 @@ function Chatbot(props) {
         }
     }
 
-    //외부 클릭 시 챗봇 닫힘 Func
-    function useOutsideAlerter(ref) {
-        useEffect(() => {
-            function handleClickOutside(event) {
-                if (ref.current && !ref.current.contains(event.target)) {
-                    props.toggle(false)
-                }
-            }    
-            // Bind the event listener
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => {
-                // Unbind the event listener on clean up
-                document.removeEventListener("mousedown", handleClickOutside);
-            };
-        }, [ref]);
-    }
-
+    //외부클릭시 챗봇 닫힘
     const chatbotUI = useRef(null);
-    useOutsideAlerter(chatbotUI)
+    ClickOutside(chatbotUI, props.toggle)
 
     return (
         <div style={{height: '100%'}} ref={chatbotUI}>
