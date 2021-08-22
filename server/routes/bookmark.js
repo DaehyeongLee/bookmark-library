@@ -11,22 +11,22 @@ const {Bookmark} = require('../models/Bookmark')
 //             Bookmark
 //=================================
 
-router.post("/getUsername", (req, res) => {
-    (async () => {
-        let username = await getUsername.sync();
-        if (username.length > 0) {
-            return res.json({
-                success: true,
-                username
-            }); 
-        } else {
-            return res.json({
-                success: false,
-                message: "Failed to get username"
-            }); 
-        }
-    })();
-});
+// router.post("/getUsername", (req, res) => {
+//     (async () => {
+//         let username = await getUsername.sync();
+//         if (username.length > 0) {
+//             return res.json({
+//                 success: true,
+//                 username
+//             }); 
+//         } else {
+//             return res.json({
+//                 success: false,
+//                 message: "Failed to get username"
+//             }); 
+//         }
+//     })();
+// });
 
 router.post("/readBookmark", (req, res) => {
     

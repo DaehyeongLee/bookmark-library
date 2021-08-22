@@ -12,7 +12,7 @@ function Bookmark() {
 
     const user = useSelector(state => state.user);  //redux에서 user의 정보를 가져옴
 
-    const [winUsername, setwinUsername] = useState("")
+    //const [winUsername, setwinUsername] = useState("")
     const [bookmarkData, setbookmarkData] = useState(null)
     const [isSelectedBookmark, setisSelectedBookmark] = useState(false)
     const [selectedBookmark, setselectedBookmark] = useState(null)
@@ -20,24 +20,24 @@ function Bookmark() {
     const [bookmarkDescription, setbookmarkDescription] = useState("")
 
     useEffect(() => {
-        axios.post('/api/bookmark/getUsername').then(response => {
-            if (response.data.success) {
+        // axios.post('/api/bookmark/getUsername').then(response => {
+        //     if (response.data.success) {
 
-                setwinUsername(response.data.username)
+        //         setwinUsername(response.data.username)
 
-                const path = `C:/Users/${response.data.username}/AppData/Local/Google/Chrome/User Data/Default/Bookmarks`
-                axios.post('/api/bookmark/readBookmark', { path: path }).then(response => {
-                    if (response.data.success) {
-                        //console.log(JSON.parse(response.data.bookmark))
-                        setbookmarkData(JSON.parse(response.data.bookmark))
-                    } else {
-                        alert(response.data.message)
-                    }
-                })
-            } else {
-                alert(response.data.message)
-            }
-        })
+        //         const path = `C:/Users/${response.data.username}/AppData/Local/Google/Chrome/User Data/Default/Bookmarks`
+        //         axios.post('/api/bookmark/readBookmark', { path: path }).then(response => {
+        //             if (response.data.success) {
+        //                 //console.log(JSON.parse(response.data.bookmark))
+        //                 setbookmarkData(JSON.parse(response.data.bookmark))
+        //             } else {
+        //                 alert(response.data.message)
+        //             }
+        //         })
+        //     } else {
+        //         alert(response.data.message)
+        //     }
+        // })
     }, [])
 
     const onTitleChange = (e) => {
@@ -90,7 +90,7 @@ function Bookmark() {
                             My Chrome Bookmark List <br />
                         </div>
 
-                        {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
+                        {/* {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
                             if (item.type == "folder") {
                                 return <React.Fragment key={index}>
                                     <Collapse>
@@ -105,7 +105,7 @@ function Bookmark() {
                                 </React.Fragment>
                             }
                         })
-                        }
+                        } */}
                     </Col>
                     <Col className="selected" span={12}>
                         <div className="result-msg">

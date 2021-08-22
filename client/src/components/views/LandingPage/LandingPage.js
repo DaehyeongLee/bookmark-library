@@ -24,6 +24,7 @@ function LandingPage(props) {
         setsearchText(e.currentTarget.value)
     }
 
+
     return (
         <div style={{ width: '100%', margin: '0', padding: '0' }}>
             <MainImage
@@ -40,14 +41,14 @@ function LandingPage(props) {
                             <Form.Item
                                 name="Bookmark_Search"
                             >
-                                <div className="search_input"><Input onChange={onInputChange} value={searchText}/></div>
+                                <div className="search_input"><Input onChange={onInputChange} value={searchText} /></div>
                             </Form.Item>
                         </Col>
                         <Col className="gutter-row" span={5}>
                             <div className="bookmark_search_btn"><Button type="primary" onClick={onSubmit}><span className="fas fa-search"></span>Search</Button></div>
                             {/* To Do: Search Icon */}
                         </Col>
-                    </Row>                    
+                    </Row>
                 </Form>
             </div>
         </div>
