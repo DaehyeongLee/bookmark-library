@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SelectedTitle from '../Commons/SelectedTitle';
 import { useSelector } from 'react-redux';
-import { Collapse, Button, Input, Row, Col, Form } from 'antd';
+import { Collapse, Button, Input, Row, Col, Form, Icon } from 'antd';
+import Dropzone from 'react-dropzone';
 import './Sections/UploadBookmark.css';
 import '../Commons/body_design.css';
 const { Panel } = Collapse;
@@ -90,6 +91,24 @@ function Bookmark() {
                             My Chrome Bookmark List <br />
                         </div>
 
+                        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                            {({ getRootProps, getInputProps }) => (
+                                <section>
+                                    <div style={{
+                                        border: '1px solid lightgray', height: '150px',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    }} {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <Icon type="plus" style={{ fontSize: '3rem' }} />
+                                    </div>
+                                </section>
+                            )}
+                        </Dropzone>
+                        <div className="panel__bookmarkInfo">
+                            <strong>Bookmark File Location Information of Each Browser</strong> <br />
+                            <strong>Chrome: &nbsp;</strong> C:/Users/<i>Your username</i>/AppData/Local/Google/Chrome/User Data/Default/Bookmarks
+                        </div>
+                        
                         {/* {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
                             if (item.type == "folder") {
                                 return <React.Fragment key={index}>

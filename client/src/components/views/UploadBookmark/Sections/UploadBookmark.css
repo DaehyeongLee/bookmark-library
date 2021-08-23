@@ -4,6 +4,9 @@
     margin-right: 30px; */
     padding: 0px 20px 50px 20px !important;
 }
+.panel__bookmarkInfo {
+    padding-top: 15px;
+}
 
 .selected {
     /* width: 50vh;
