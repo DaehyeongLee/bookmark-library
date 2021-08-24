@@ -78,6 +78,23 @@ function Bookmark() {
                 }
             })
     }
+    const onDropzoneHandler = (file) => {
+
+        let formData = new FormData;
+        const config = {
+            header: {'content-type' : 'multipart/form-data'}
+        }
+        formData.append("file", file[0])
+
+        axios.post('/api/bookmark/dropFile', formData, config)
+            .then(response => {
+                if (response.data.success) {
+                    console.log(response.data.fileName)
+                } else {
+                    alert('파일을 업로드하는 것에 실패했습니다.')
+                }
+            })
+    }
 
     return (
         <React.Fragment>
@@ -91,7 +108,7 @@ function Bookmark() {
                             My Chrome Bookmark List <br />
                         </div>
 
-                        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                        <Dropzone onDrop={onDropzoneHandler}>
                             {({ getRootProps, getInputProps }) => (
                                 <section>
                                     <div style={{

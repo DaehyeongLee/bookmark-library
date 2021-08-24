@@ -3,6 +3,7 @@ const router = express.Router();
 
 const getUsername = require('username');
 const fs = require('fs');
+const multer = require('multer');
 
 const {Bookmark} = require('../models/Bookmark')
 
@@ -27,6 +28,35 @@ const {Bookmark} = require('../models/Bookmark')
 //         }
 //     })();
 // });
+
+let storage = multer.diskStorage({
+    //파일 저장 경로
+    destination: (req, file, cb) => {
+        cb(null, "server/uploads/");
+    },
+    //파일 저장 시 지정될 파일 이름 (날짜 + 파일이름)
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}_${file.originalname}`);
+    },
+    // fileFilter: (req, file, cb) => {
+    //     const ext = path.extname(file.originalname)
+    //     if (ext !== '.mp4') {
+    //         return cb(res.status(400).end('only mp4 is allowed'), false);
+    //     }
+    //     cb (null, true)
+    // }
+})
+const upload = multer({storage: storage}).single("file"); //single은 파일 하나만
+
+router.post('/dropFile', (req, res) => {
+    upload(req, res, err => {
+        if(err) {
+            return res.json({success: false, err})
+        }
+        //url: 파일 저장이 된 경로(uploads/), filename: 파일이름
+        return res.json({success: true, fileName: res.req.file.filename})
+    })
+})
 
 router.post("/readBookmark", (req, res) => {
     
