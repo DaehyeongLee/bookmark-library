@@ -14,3 +14,5 @@ yarn-error.log*
 chatbot-app-314712-a210359f539b.json
 
 Service-KeyPair.pem
+
+server/uploads/*

@@ -49,6 +49,9 @@ let storage = multer.diskStorage({
 const upload = multer({storage: storage}).single("file"); //single은 파일 하나만
 
 router.post('/dropFile', (req, res) => {
+
+    //To Do: 북마크 파일로만 제한 필요
+
     upload(req, res, err => {
         if(err) {
             return res.json({success: false, err})

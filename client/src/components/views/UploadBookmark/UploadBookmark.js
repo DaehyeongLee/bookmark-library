@@ -15,6 +15,7 @@ function Bookmark() {
 
     //const [winUsername, setwinUsername] = useState("")
     const [bookmarkData, setbookmarkData] = useState(null)
+    const [showPanel, setshowPanel] = useState(false)
     const [isSelectedBookmark, setisSelectedBookmark] = useState(false)
     const [selectedBookmark, setselectedBookmark] = useState(null)
     const [bookmarkTitle, setbookmarkTitle] = useState("")
@@ -82,14 +83,25 @@ function Bookmark() {
 
         let formData = new FormData;
         const config = {
-            header: {'content-type' : 'multipart/form-data'}
+            header: { 'content-type': 'multipart/form-data' }
         }
         formData.append("file", file[0])
 
         axios.post('/api/bookmark/dropFile', formData, config)
             .then(response => {
                 if (response.data.success) {
-                    console.log(response.data.fileName)
+
+                    const path = `server/uploads/${response.data.fileName}`
+
+                    axios.post('/api/bookmark/readBookmark', { path: path }).then(response => {
+                        if (response.data.success) {
+                            setbookmarkData(JSON.parse(response.data.bookmark))
+                            setshowPanel(true)
+                        } else {
+                            alert(response.data.message)
+                        }
+                    })
+
                 } else {
                     alert('파일을 업로드하는 것에 실패했습니다.')
                 }
@@ -107,41 +119,44 @@ function Bookmark() {
                         <div className="result-msg">
                             My Chrome Bookmark List <br />
                         </div>
-
-                        <Dropzone onDrop={onDropzoneHandler}>
-                            {({ getRootProps, getInputProps }) => (
-                                <section>
-                                    <div style={{
-                                        border: '1px solid lightgray', height: '150px',
-                                        display: 'flex', alignItems: 'center', justifyContent: 'center'
-                                    }} {...getRootProps()}>
-                                        <input {...getInputProps()} />
-                                        <Icon type="plus" style={{ fontSize: '3rem' }} />
-                                    </div>
-                                </section>
-                            )}
-                        </Dropzone>
-                        <div className="panel__bookmarkInfo">
-                            <strong>Bookmark File Location Information of Each Browser</strong> <br />
-                            <strong>Chrome: &nbsp;</strong> C:/Users/<i>Your username</i>/AppData/Local/Google/Chrome/User Data/Default/Bookmarks
+                        {!showPanel &&
+                            <React.Fragment>
+                                <Dropzone onDrop={onDropzoneHandler}>
+                                    {({ getRootProps, getInputProps }) => (
+                                        <section>
+                                            <div style={{
+                                                border: '1px solid lightgray', height: '150px',
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                            }} {...getRootProps()}>
+                                                <input {...getInputProps()} />
+                                                <Icon type="plus" style={{ fontSize: '3rem' }} />
+                                            </div>
+                                        </section>
+                                    )}
+                                </Dropzone>
+                                <div className="panel__bookmarkInfo">
+                                    <strong>Bookmark File Location Information of Each Browser</strong> <br />
+                                    <strong>Chrome: &nbsp;</strong> C:/Users/<i>Your username</i>/AppData/Local/Google/Chrome/User Data/Default/Bookmarks
                         </div>
-                        
-                        {/* {bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
-                            if (item.type == "folder") {
-                                return <React.Fragment key={index}>
-                                    <Collapse>
-                                        <Panel header={item.name} >
-                                            {item && item.children.map((childItem, childIndex) => {
-                                                return <div key={childIndex}>{childIndex + 1}.&nbsp;&nbsp;&nbsp;{childItem.name}</div>
-                                            })
-                                            }
-                                            <div className="upload_btn"><Button type="primary" onClick={() => onSelectBookmark(item.children)}>Select</Button></div>
-                                        </Panel>
-                                    </Collapse>
-                                </React.Fragment>
-                            }
-                        })
-                        } */}
+                            </React.Fragment>
+                        }
+                        {showPanel &&
+                            bookmarkData && bookmarkData.roots.bookmark_bar.children.map((item, index) => {
+                                if (item.type == "folder") {
+                                    return <React.Fragment key={index}>
+                                        <Collapse>
+                                            <Panel header={item.name} >
+                                                {item && item.children.map((childItem, childIndex) => {
+                                                    return <div key={childIndex}>{childIndex + 1}.&nbsp;&nbsp;&nbsp;{childItem.name}</div>
+                                                })
+                                                }
+                                                <div className="upload_btn"><Button type="primary" onClick={() => onSelectBookmark(item.children)}>Select</Button></div>
+                                            </Panel>
+                                        </Collapse>
+                                    </React.Fragment>
+                                }
+                            })
+                        }
                     </Col>
                     <Col className="selected" span={12}>
                         <div className="result-msg">
