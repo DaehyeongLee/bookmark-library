@@ -102,6 +102,8 @@ function Bookmark() {
                         }
                     })
 
+                } else if (response.data.err) {
+                    alert(response.data.err)
                 } else {
                     alert('파일을 업로드하는 것에 실패했습니다.')
                 }

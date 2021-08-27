@@ -51,14 +51,20 @@ const upload = multer({storage: storage}).single("file"); //single은 파일 하
 router.post('/dropFile', (req, res) => {
 
     //To Do: 북마크 파일로만 제한 필요
+        upload(req, res, err => {
+            if(err) {
+                return res.json({success: false, err})
+            }
+            if (res.req.file.filename.slice(-9, res.req.file.filename.length) == "Bookmarks") {
+                //url: 파일 저장이 된 경로(uploads/), filename: 파일이름
+                return res.json({success: true, fileName: res.req.file.filename})
+            } else {
+                return res.json({success: false, err: "Not bookmark files. Please upload the bookmark file."})
+            }
+        })
+   
 
-    upload(req, res, err => {
-        if(err) {
-            return res.json({success: false, err})
-        }
-        //url: 파일 저장이 된 경로(uploads/), filename: 파일이름
-        return res.json({success: true, fileName: res.req.file.filename})
-    })
+    
 })
 
 router.post("/readBookmark", (req, res) => {
