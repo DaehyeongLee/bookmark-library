@@ -11,6 +11,7 @@ import ChatbotBtn from "./views/Chatbot/ChatbotBtn";
 import UploadBookmark from "./views/UploadBookmark/UploadBookmark";
 import SearchedBookmark from "./views/SearchedBookmark/SearchedBookmark";
 import DetailedBookmark from "./views/DetailedBookmark/DetailedBookmark";
+import FavoriteBookmark from "./views/FavoriteBookmark/FavoriteBookmark";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/bookmark/upload" component={Auth(UploadBookmark, true)} />
           <Route exact path="/bookmark/search-result/:input" component={Auth(SearchedBookmark, null)} />
           <Route exact path="/bookmark/detail/:item" component={Auth(DetailedBookmark, null)} />
+          <Route exact path="/bookmark/favorite" component={Auth(FavoriteBookmark, true)} />
         </Switch>
       </div>
       <Footer />
